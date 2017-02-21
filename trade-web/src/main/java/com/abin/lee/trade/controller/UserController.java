@@ -23,7 +23,7 @@ public class UserController {
     private UserService userService;
 
     @ApiOperation(value="创建用户", notes="根据User对象创建用户")
-//    @ApiImplicitParam(name = "userVo", value = "用户详细实体UserVo", required = true, dataType = "UserVo")
+    @ApiImplicitParam(name = "userVo", value = "用户详细实体UserVo", required = true, dataType = "UserVo")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String add(@RequestBody UserVo userVo) {
         String result = "FAILURE";
@@ -37,7 +37,7 @@ public class UserController {
     }
 
     @ApiOperation(value="用户查询", notes="根据id查询用户")
-//    @ApiImplicitParam(name = "user", value = "用户主键id", required = true, dataType = "User")
+    @ApiImplicitParam(name = "id", value = "用户主键id", required = true, dataType = "Long")
     @RequestMapping(value = "/find", method = RequestMethod.POST)
     public User find(@RequestBody Long id) {
         User user = null;

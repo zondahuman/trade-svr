@@ -34,10 +34,10 @@ public class Swagger2 {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Spring Boot中使用Swagger2构建RESTful APIs")
-                .description("https://github.com/zondahuman/spring-boot-start1.git")
-                .termsOfServiceUrl("https://github.com/zondahuman/spring-boot-start1.git")
+                .description("https://github.com/zondahuman/trade-svr.git")
+                .termsOfServiceUrl("https://github.com/zondahuman/trade-svr.git")
                 .contact("abin")
-                .version("0.01-SNAPSHOT")
+                .version("0.0.1-SNAPSHOT")
                 .build();
     }
 
