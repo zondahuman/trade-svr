@@ -1,0 +1,16 @@
+CREATE TABLE `user` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `user_key` varchar(64) NOT NULL COMMENT '用户Key',
+  `ref_id` varchar(64) NOT NULL COMMENT '三方业务编号',
+  `id_no` varchar(64) DEFAULT NULL COMMENT '身份证号',
+  `channel_code` varchar(64) NOT NULL COMMENT '渠道编号',
+  `user_type` varchar(64) NOT NULL COMMENT '用户类型',
+  `status` varchar(64) NOT NULL COMMENT '用户状态',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL COMMENT '修改时间',
+  `version` int(11) NOT NULL COMMENT '版本号',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_user_key` (`user_key`),
+  UNIQUE KEY `unique_ref_id_channel_code` (`ref_id`,`channel_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户';
