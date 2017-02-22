@@ -4,6 +4,7 @@ package com.abin.lee.trade.service;
 import com.abin.lee.trade.model.User;
 import com.abin.lee.trade.model.vo.response.UserVo;
 import com.abin.lee.trade.service.base.BaseService;
+import org.springframework.data.domain.Page;
 
 /**
  * Created by zhoujiuping on 2016/12/7.
@@ -39,5 +40,7 @@ public interface UserService extends BaseService<User> {
      * @return
      */
     User checkUser(String channel, String userKey);
+
+    Page<User> findByRemark(String remark, Integer pageNo, Integer pageSize);
 
 }

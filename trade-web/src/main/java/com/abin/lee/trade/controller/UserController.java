@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,5 +49,22 @@ public class UserController {
         }
         return user;
     }
+
+
+    @ApiOperation(value="用户查询remark", notes="根据remark查询用户")
+//    @ApiImplicitParam(name = "remark", value = "用户描述remark", required = true, dataType = "String")
+    @RequestMapping(value = "/findByRemark", method = RequestMethod.POST)
+    public Page<User> findByRemark(String remark, Integer pageNo, Integer pageSize) {
+        Page<User> userPage = null;
+        try {
+            userPage = this.userService.findByRemark(remark, pageNo, pageSize);
+        } catch (Exception e) {
+            log.error("e: ", e);
+        }
+        return userPage;
+    }
+
+
+
 
 }

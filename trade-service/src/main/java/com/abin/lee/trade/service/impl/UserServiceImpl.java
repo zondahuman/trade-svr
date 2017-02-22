@@ -10,6 +10,10 @@ import com.abin.lee.trade.service.UserService;
 import com.abin.lee.trade.service.base.impl.BaseServiceImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.redis.connection.SortParameters;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -123,5 +127,18 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserRepository> imple
     private void checkParam(UserVo vo) {
         User user = repository.findByChannelCodeAndRefId(vo.getChannelCode(), vo.getRefId());
     }
+
+
+    @Override
+    public Page<User> findByRemark(String remark, Integer pageNo, Integer pageSize) {
+        //显示第1页每页显示3条
+        PageRequest pageRequest = new PageRequest(pageNo, pageSize);
+//        Sort sort = new Sort(SortParameters.Order.DESC);
+        //根据年龄进行查询
+        Page<User> userPage = repository.findByRemark(remark, pageRequest);
+        return userPage;
+    }
+
+
 
 }
